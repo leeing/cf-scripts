@@ -1,0 +1,16 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "scripts",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-02-17",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	"routes": [
+		{
+			"pattern": "s.qadmlee.com/*",
+			"zone_name": "qadmlee.com"
+		}
+	]
+}

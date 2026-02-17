@@ -1,0 +1,25 @@
+{
+	"name": "cf-scripts",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"check": "biome check --write .",
+		"typecheck": "tsc --noEmit",
+		"test": "vitest run",
+		"types": "wrangler types"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@cloudflare/vitest-pool-workers": "^0.8.0",
+		"@cloudflare/workers-types": "^4.20250214.0",
+		"typescript": "^5.7.3",
+		"vitest": "~2.1.8",
+		"wrangler": "^3.105.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "sharp", "workerd"]
+	}
+}
