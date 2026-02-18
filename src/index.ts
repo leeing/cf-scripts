@@ -18,6 +18,10 @@ const ROUTES: Readonly<Record<string, ScriptEntry>> = {
 		url: "https://raw.githubusercontent.com/leeing/vpscheck/refs/heads/main/check.py",
 		description: "VPS 流媒体解锁检测",
 	},
+	"/deploy.py": {
+		url: "https://raw.githubusercontent.com/leeing/nano-xray/refs/heads/main/deploy.py",
+		description: "Nano Xray 一键部署",
+	},
 } as const;
 
 const DOMAIN = "s.qadmlee.com";
