@@ -7,7 +7,6 @@
 
 interface ScriptEntry {
 	readonly url: string;
-	readonly description: string;
 }
 
 /**
@@ -16,11 +15,9 @@ interface ScriptEntry {
 const ROUTES: Readonly<Record<string, ScriptEntry>> = {
 	"/check.py": {
 		url: "https://raw.githubusercontent.com/leeing/vpscheck/refs/heads/main/check.py",
-		description: "VPS 流媒体解锁检测",
 	},
 	"/deploy.py": {
 		url: "https://raw.githubusercontent.com/leeing/nano-xray/refs/heads/main/deploy.py",
-		description: "Nano Xray 一键部署",
 	},
 } as const;
 
@@ -32,16 +29,15 @@ const DOMAIN = "s.qadmlee.com";
 function renderHomePage(): string {
 	const scriptCards = Object.entries(ROUTES)
 		.map(
-			([path, entry], i) => `
+			([path, _entry], i) => `
       <div class="card" style="animation-delay:${String(0.1 + i * 0.12)}s">
         <div class="card-header">
           <div class="dots"><span></span><span></span><span></span></div>
           <span class="card-title">${path}</span>
         </div>
-        <p class="card-desc">${entry.description}</p>
         <div class="cmd-row" onclick="copyCmd(this)" title="点击复制">
           <span class="prompt">$</span>
-          <code>curl -sL https://${DOMAIN}${path} | python3</code>
+          <code>curl -sLO https://${DOMAIN}${path}</code>
           <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
         </div>
       </div>`,
@@ -374,14 +370,14 @@ function renderHomePage(): string {
     </div>
 
 
-    <div class="section-label">可用脚本</div>
+
     ${scriptCards}
 
 
 
     <div class="footer">
       <span><span class="status-dot"></span>所有服务正常运行</span>
-      <span>Powered by <a href="https://workers.cloudflare.com" target="_blank" rel="noopener">Cloudflare Workers</a></span>
+      <span>Powered by <a href="https://s.qadmlee.com" target="_blank" rel="noopener">leeing</a></span>
     </div>
   </div>
   <div class="toast" id="toast">已复制到剪贴板</div>
