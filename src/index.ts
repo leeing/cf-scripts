@@ -49,7 +49,7 @@ function renderHomePage(): string {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>cf-scripts — 脚本分发服务</title>
+  <title>Scripts</title>
   <meta name="description" content="通过 Cloudflare Worker 一键运行远程脚本">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -326,7 +326,7 @@ function renderHomePage(): string {
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       font-size: 0.75rem;
       color: var(--text-dim);
@@ -338,18 +338,7 @@ function renderHomePage(): string {
       transition: color 0.2s;
     }
     .footer a:hover { color: var(--accent); }
-    .status-dot {
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 6px;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%,100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
+
     @keyframes fade-up {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
@@ -366,7 +355,7 @@ function renderHomePage(): string {
   <div class="wrapper">
     <div class="logo">
       <div class="logo-icon">./</div>
-      <span class="logo-text">cf-scripts</span>
+      <span class="logo-text">Scripts</span>
     </div>
 
 
@@ -376,7 +365,6 @@ function renderHomePage(): string {
 
 
     <div class="footer">
-      <span><span class="status-dot"></span>所有服务正常运行</span>
       <span>Powered by <a href="https://s.qadmlee.com" target="_blank" rel="noopener">leeing</a></span>
     </div>
   </div>

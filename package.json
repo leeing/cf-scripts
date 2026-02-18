@@ -18,7 +18,7 @@
 		"@cloudflare/workers-types": "^4.20250214.0",
 		"typescript": "^5.7.3",
 		"vitest": "~2.1.8",
-		"wrangler": "^3.105.0"
+		"wrangler": "^4.35.0"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": ["@biomejs/biome", "esbuild", "sharp", "workerd"]
