@@ -7,7 +7,10 @@
 
 interface ScriptEntry {
 	readonly url: string;
+	readonly cmd: string;
 }
+
+const DOMAIN = "s.qadmlee.com";
 
 /**
  * 路由表 — 新增脚本只需加一行
@@ -15,13 +18,13 @@ interface ScriptEntry {
 const ROUTES: Readonly<Record<string, ScriptEntry>> = {
 	"/check.py": {
 		url: "https://raw.githubusercontent.com/leeing/vpscheck/refs/heads/main/check.py",
+		cmd: `curl -sL https://${DOMAIN}/check.py | python3`,
 	},
 	"/deploy.py": {
 		url: "https://raw.githubusercontent.com/leeing/nano-xray/refs/heads/main/deploy.py",
+		cmd: `curl -sLO https://${DOMAIN}/deploy.py`,
 	},
 } as const;
-
-const DOMAIN = "s.qadmlee.com";
 
 /**
  * 生成首页 HTML — 列出所有可用脚本
@@ -29,7 +32,7 @@ const DOMAIN = "s.qadmlee.com";
 function renderHomePage(): string {
 	const scriptCards = Object.entries(ROUTES)
 		.map(
-			([path, _entry], i) => `
+			([path, entry], i) => `
       <div class="card" style="animation-delay:${String(0.1 + i * 0.12)}s">
         <div class="card-header">
           <div class="dots"><span></span><span></span><span></span></div>
@@ -37,7 +40,7 @@ function renderHomePage(): string {
         </div>
         <div class="cmd-row" onclick="copyCmd(this)" title="点击复制">
           <span class="prompt">$</span>
-          <code>curl -sLO https://${DOMAIN}${path}</code>
+          <code>${entry.cmd}</code>
           <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
         </div>
       </div>`,
